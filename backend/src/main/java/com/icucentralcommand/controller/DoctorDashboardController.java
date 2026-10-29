@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/doctor")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class DoctorDashboardController {
 
     private final DoctorDashboardService doctorDashboardService;

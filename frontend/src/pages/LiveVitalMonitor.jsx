@@ -35,10 +35,23 @@ export default function LiveVitalMonitor() {
 
   const setupSseStream = () => {
     try {
-      // Determine stream URL (supports standard base path / relative path)
-      const streamUrl = import.meta.env.VITE_API_URL 
-        ? `${import.meta.env.VITE_API_URL}/vitals/stream` 
-        : 'http://localhost:8080/api/vitals/stream';
+      let token = null;
+      try {
+        const user = JSON.parse(localStorage.getItem('icu_user'));
+        if (user && user.token) {
+          token = user.token;
+        }
+      } catch (e) {
+        // Ignore parse error
+      }
+
+      const rawBase = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '/api';
+      const cleanBase = rawBase.replace(/\/+$/, '');
+      let streamUrl = `${cleanBase}/vitals/stream`;
+
+      if (token) {
+        streamUrl += `?access_token=${encodeURIComponent(token)}`;
+      }
 
       const es = new EventSource(streamUrl);
       eventSourceRef.current = es;

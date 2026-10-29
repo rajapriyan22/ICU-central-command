@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/bed-assignments")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class BedAssignmentController {
 
     private final BedAssignmentService bedAssignmentService;

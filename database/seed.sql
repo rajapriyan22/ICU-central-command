@@ -14,13 +14,13 @@ TRUNCATE TABLE users;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- 1. Insert Users (BCrypt hashes for Admin@123, Doctor@123, Nurse@123)
--- BCrypt for 'Admin@123': $2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+-- Passwords are BCrypt hashes: admin = Admin@123, doctor1/doctor2 = Doctor@123, nurse1/nurse2 = Nurse@123
 INSERT INTO users (id, username, email, password, full_name, role, department, specialization, shift, is_active) VALUES
-(1, 'admin', 'admin@hospital.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Hospital Administrator', 'ADMIN', 'Hospital Operations', 'Hospital Management', 'Full Day', TRUE),
-(2, 'doctor1', 'doctor1@hospital.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Dr. Arun Kumar', 'DOCTOR', 'Critical Care', 'Intensive Care Medicine', 'Day Shift', TRUE),
-(3, 'nurse1', 'nurse1@hospital.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Priya Sharma', 'NURSE', 'ICU - 1st Floor', 'Critical Care Nursing', 'Morning', TRUE),
-(4, 'doctor2', 'doctor2@hospital.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Dr. Ananya Sharma', 'DOCTOR', 'Pulmonology', 'Pulmonologist & Intensivist', 'Day Shift', TRUE),
-(5, 'nurse2', 'nurse2@hospital.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sarah Jenkins', 'NURSE', 'ICU - 2nd Floor', 'Surgical ICU Nursing', 'Night', TRUE);
+(1, 'admin', 'admin@hospital.com', '$2a$10$O/0NRmiT0VCFVQHNZAWCOOlglaU7LTqarf2qnfgyIYRx5w.MnXIM.', 'Hospital Administrator', 'ADMIN', 'Hospital Operations', 'Hospital Management', 'Full Day', TRUE),
+(2, 'doctor1', 'doctor1@hospital.com', '$2a$10$W/8s6BwgomzUdy5PO/0Lx.gf/2WP5OdWrL2vaRiSQ.JOmUuz7I0HC', 'Dr. Arun Kumar', 'DOCTOR', 'Critical Care', 'Intensive Care Medicine', 'Day Shift', TRUE),
+(3, 'nurse1', 'nurse1@hospital.com', '$2a$10$BuLhar5LLZUOawo0hCHW6.ozrApoIrkk.5gZvUEE8mBqFno1xoV6m', 'Priya Sharma', 'NURSE', 'ICU - 1st Floor', 'Critical Care Nursing', 'Morning', TRUE),
+(4, 'doctor2', 'doctor2@hospital.com', '$2a$10$W/8s6BwgomzUdy5PO/0Lx.gf/2WP5OdWrL2vaRiSQ.JOmUuz7I0HC', 'Dr. Ananya Sharma', 'DOCTOR', 'Pulmonology', 'Pulmonologist & Intensivist', 'Day Shift', TRUE),
+(5, 'nurse2', 'nurse2@hospital.com', '$2a$10$BuLhar5LLZUOawo0hCHW6.ozrApoIrkk.5gZvUEE8mBqFno1xoV6m', 'Sarah Jenkins', 'NURSE', 'ICU - 2nd Floor', 'Surgical ICU Nursing', 'Night', TRUE);
 
 -- 2. Insert Wards
 INSERT INTO wards (id, name, floor, unit_type, capacity, description) VALUES

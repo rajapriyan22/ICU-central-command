@@ -14,7 +14,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/vitals")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class VitalController {
 
     private final VitalService vitalService;

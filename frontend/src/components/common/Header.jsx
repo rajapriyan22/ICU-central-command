@@ -22,7 +22,7 @@ export default function Header({ globalSearch, setGlobalSearch }) {
     return () => clearInterval(interval);
   }, []);
 
-  const role = user?.role ? user.role.toUpperCase() : 'ADMIN';
+  const role = user?.role ? user.role.toUpperCase() : '';
 
   const getInitials = (name) => {
     if (!name) return 'U';

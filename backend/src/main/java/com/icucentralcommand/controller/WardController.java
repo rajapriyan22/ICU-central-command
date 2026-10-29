@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/wards")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class WardController {
 
     private final WardService wardService;

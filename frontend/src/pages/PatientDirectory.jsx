@@ -18,7 +18,7 @@ export default function PatientDirectory() {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const userRole = user?.role ? user.role.toUpperCase() : 'ADMIN';
+  const userRole = user?.role ? user.role.toUpperCase() : '';
   const canAddPatient = ['ADMIN', 'DOCTOR', 'NURSE'].includes(userRole);
 
   useEffect(() => {

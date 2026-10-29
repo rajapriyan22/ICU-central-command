@@ -25,7 +25,7 @@ export default function Sidebar() {
   const { unreadCount } = useAlerts();
   const navigate = useNavigate();
 
-  const role = user?.role ? user.role.toUpperCase() : 'ADMIN';
+  const role = user?.role ? user.role.toUpperCase() : '';
 
   const alertBadgeText = unreadCount > 0 ? String(unreadCount) : null;
 
@@ -64,7 +64,7 @@ export default function Sidebar() {
     { name: 'Profile', path: '/settings', icon: UserCheck },
   ];
 
-  const navItems = role === 'DOCTOR' ? doctorNav : role === 'NURSE' ? nurseNav : adminNav;
+  const navItems = role === 'ADMIN' ? adminNav : role === 'DOCTOR' ? doctorNav : role === 'NURSE' ? nurseNav : [];
 
   const handleLogout = () => {
     logout();

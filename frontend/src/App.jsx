@@ -33,7 +33,7 @@ function RoleGuard({ allowedRoles, children }) {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
 
-  const userRole = user.role ? user.role.toUpperCase() : 'ADMIN';
+  const userRole = user.role ? user.role.toUpperCase() : '';
   if (!allowedRoles.includes(userRole)) {
     return <Forbidden />;
   }
@@ -44,10 +44,11 @@ function DefaultHomeRedirect() {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
 
-  const role = user.role ? user.role.toUpperCase() : 'ADMIN';
+  const role = user.role ? user.role.toUpperCase() : '';
   if (role === 'DOCTOR') return <Navigate to="/doctor" replace />;
   if (role === 'NURSE') return <Navigate to="/nurse" replace />;
-  return <Dashboard />;
+  if (role === 'ADMIN') return <Dashboard />;
+  return <Forbidden />;
 }
 
 export default function App() {
