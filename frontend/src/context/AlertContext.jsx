@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { AlertService } from '../services/api';
+import { useAuth } from './AuthContext';
 
 const AlertContext = createContext();
 
 export function AlertProvider({ children }) {
+  const { user } = useAuth();
   const [alerts, setAlerts] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -32,8 +34,9 @@ export function AlertProvider({ children }) {
   }, [filter]);
 
   useEffect(() => {
+    if (!user) return;
     fetchAlerts(filter);
-  }, [filter, fetchAlerts]);
+  }, [filter, fetchAlerts, user]);
 
   const markAsRead = async (id) => {
     // Check if target alert is already read to prevent double decrement

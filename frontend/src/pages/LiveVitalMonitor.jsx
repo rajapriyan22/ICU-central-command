@@ -45,8 +45,8 @@ export default function LiveVitalMonitor() {
         // Ignore parse error
       }
 
-      const rawBase = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '/api';
-      const cleanBase = rawBase.replace(/\/+$/, '');
+      let cleanBase = (import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '/api').trim().replace(/\/+$/, '');
+      if (!cleanBase.endsWith('/api')) cleanBase = `${cleanBase}/api`;
       let streamUrl = `${cleanBase}/vitals/stream`;
 
       if (token) {
