@@ -1,0 +1,9 @@
+{
+  "name": "icu-central-command-workspace",
+  "version": "1.0.0",
+  "description": "ICU Central Command Workspace Launcher",
+  "scripts": {
+    "start": "start-all.bat",
+    "dev": "start-all.bat"
+  }
+}
